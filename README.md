@@ -30,6 +30,7 @@ $usr->save();
 
 * pagina login
   * php artisan make:view login
+* pagina o enrutamiento logout  
 * enrutamiento
 
 ```php
