@@ -13,3 +13,31 @@
   11    11:46.820 php artisan serve
 
 ```
+
+## autenticacion
+
+* modelo usuario
+* crear usuario (tinker)
+
+```php
+$usr=new User();
+
+$usr->name="john";
+$user->email="a@b.cl";
+$usr->password=Hash:make('abc123');
+$usr->save();
+```
+
+* pagina login
+  * php artisan make:view login
+* enrutamiento
+
+```php
+Route::middleware('auth')->get('/insertar',[ClienteController::class,'insertarGet']);
+Route::middleware('auth')->post('/insertar',[ClienteController::class,'insertarPost']);
+Route::get('/login',[UsuarioController::class,'login'])->name('login');
+Route::post('/login',[UsuarioController::class,'loginPost']);
+Route::get('/logout',[UsuarioController::class,'logout']);
+```
+
+* opcional agregar autenticacion personalizada.

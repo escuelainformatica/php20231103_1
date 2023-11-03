@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\UsuarioController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,5 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-Route::get('/insertar',[ClienteController::class,'insertarGet']);
-Route::post('/insertar',[ClienteController::class,'insertarPost']);
+Route::middleware('auth')->get('/insertar',[ClienteController::class,'insertarGet']);
+Route::middleware('auth')->post('/insertar',[ClienteController::class,'insertarPost']);
+Route::get('/login',[UsuarioController::class,'login'])->name('login');
+Route::post('/login',[UsuarioController::class,'loginPost']);
+Route::get('/logout',[UsuarioController::class,'logout']);
